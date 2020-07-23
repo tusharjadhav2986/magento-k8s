@@ -1,0 +1,38 @@
+apitype: v1
+kind: Service
+metadata:
+  name: my-web
+  labels: 
+    app: my-web
+spec:
+  selector:
+    app: my-web
+  ports:
+  - name: http
+    port: 80
+  - name : https
+    port 443
+---
+apitype: apps/v1
+kind: Deployment
+metadata:
+  name: my-web
+  labels:
+    type: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels
+      app: my-web
+  template:
+    metadata:
+      labels:
+        app: my-web
+        type: nginx
+    spec:
+      containers:
+      - name: my-web
+        image: docker pull tusharja2986/azure-k8s:#{Build.BuildId}#
+        ports:
+        - containerPort: 80
+		    - containerPort: 443
