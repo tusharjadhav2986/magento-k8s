@@ -1,0 +1,1 @@
+* * * * * www-data /usr/bin/php /var/www/html/m2/bin/magento cron:run >> /var/www/html/m2/var/log/magento.cron.log 2>&1

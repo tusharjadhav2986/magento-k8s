@@ -1,0 +1,115 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: datadir-db-0
+  labels:
+    app: db-ss
+    podindex: "0"
+spec:
+  storageClassName: mysql-ss-0
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  hostPath:
+    path: "/data/pods/db-0/datadir"
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: datadir-db-1
+  labels:
+    app: db-ss
+    podindex: "1"
+spec:
+  storageClassName: mysql-ss-1
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  hostPath:
+    path: "/data/pods/db-1/datadir"
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: datadir-db-2
+  labels:
+    app: db-ss
+    podindex: "2"
+spec:
+  storageClassName: mysql-ss-2
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  hostPath:
+    path: "/data/pods/db-2/datadir"
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-datadir-db-ss-0
+  labels:
+    app: db-ss
+spec:
+  storageClassName: mysql-ss-0
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      app: db-ss
+      podindex: "0"
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-datadir-db-ss-1
+  labels:
+    app: db-ss
+spec:
+  storageClassName: mysql-ss-1
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      app: db-ss
+      podindex: "1"
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-datadir-db-ss-2
+  labels:
+    app: db-ss
+spec:
+  storageClassName: mysql-ss-2
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      app: db-ss
+      podindex: "2"
+
