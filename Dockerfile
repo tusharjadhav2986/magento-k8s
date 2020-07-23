@@ -9,7 +9,7 @@ ENV INSTALL_DIR /var/www/html/m2
 RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
  && apt-get update \
  && apt-get install -y nginx  php7.2
-	
+COPY README.md /var/www/html/m2/
 	
 EXPOSE 80
 EXPOSE 443
